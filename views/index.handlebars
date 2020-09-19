@@ -1,152 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- main section -->
+<header class="container">
+    <div class="row">
+        <div class="col">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- CSS only -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
-    <link rel="stylesheet" href="./assets/styles.css" />
-
-    <title>Handle Burger Bar</title>
-</head>
-
-<body>
-    <!-- main section -->
-    <header class="container">
-        <div class="row">
-            <div class="col">
-
-            </div>
-            <div class="col-6">
-                <img src="./public/img/handle-burger-bar.png" alt="Handle Burger Bar logo" title="Handle Burger Bar">
-            </div>
-            <div class="col">
-
-            </div>
         </div>
-    </header>
-
-    <main id="form" class="container">
-        <div class="row">
-            <div class="col">
-
-            </div>
-            <div class="col-6">
-                <h2>Add a Burger</h2>
-                <form id="createburger" class="button-size">
-                    <textarea type="text" name="plan"></textarea>
-                    <button type="submit">Save Burger</button>
-                </form>
-            </div>
-            <div class="col">
-
-            </div>
+        <div class="col-6">
+            <img src="./public/img/handle-burger-bar.png" alt="Handle Burger Bar logo" title="Handle Burger Bar">
         </div>
-    </main>
+        <div class="col">
 
-    <div id="split" class="container">
-        <div class="row">
-            <div id="Eat" class="col">
-                <h3>Burgers to be Eaten</h3>
-                <ul>
-                    {{#each burger}}
-                    <li>
-                        <p>
-                            {{this.id}}. {{this.burger}}
-
-                            <button data-burgerid="{{this.id}}" class="eatBurger">Devour the Burger</button>
-                        </p>
-                    </li>
-                    {{/each}}
-                </ul>
-            </div>
-            <div class="col">
-                <h3>Burgers I've Eaten</h3>
-                <ul>
-                    {{#each eatenBurger}}
-                    <li>
-                        <p>
-                            {{this.id}}. {{this.eatenBurger}}
-
-                            <button data-burgerid="{{this.id}}" class="delBurger">Clear</button>
-                        </p>
-                    </li>
-                    {{/each}}
-                </ul>
-            </div>
         </div>
     </div>
+</header>
+
+<main id="form" class="container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col-6">
+            <h2>Add a Burger</h2>
+            <form id="createBurger" class="button-size">
+                <textarea type="text" name="plan"></textarea>
+                <button type="submit">Save Burger</button>
+            </form>
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+</main>
+
+<div id="split" class="container">
+    <div class="row">
+        <div id="Eat" class="col">
+            <h3>Burgers to be Eaten</h3>
+            <ul>
+                {{#each burger}}
+                <li>
+                    <p>
+                        {{this.id}}. {{this.burger}}
+
+                        <button data-burgerid="{{this.id}}" class="eatBurger">Devour the Burger</button>
+                    </p>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col">
+            <h3>Burgers I've Eaten</h3>
+            <ul>
+                {{#each eatenBurger}}
+                <li>
+                    <p>
+                        {{this.id}}. {{this.eatenBurger}}
+
+                        <button data-burgerid="{{this.id}}" class="delBurger">Clear</button>
+                    </p>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
 
 
 
 
 
 
-    {{!-- <script type="text/javascript">
-        $(".delplan").on("click", function (event) {
-            // Get the ID from the button.
-            // This is shorthand for $(this).attr("data-planid")
-            var id = $(this).data("planid");
+<script type="text/javascript">
+    $(".delplan").on("click", function (event) {
+        // Get the ID from the button.
+        // This is shorthand for $(this).attr("data-planid")
+        var id = $(this).data("planid");
 
-            // Send the DELETE request.
-            $.ajax("/api/plans/" + id, {
-                type: "DELETE"
-            }).then(
-                function () {
-                    console.log("deleted id ", id);
-                    // Reload the page to get the updated list
-                    location.reload();
-                }
-            );
-        });
+        // Send the DELETE request.
+        $.ajax("/api/plans/" + id, {
+            type: "DELETE"
+        }).then(
+            function () {
+                console.log("deleted id ", id);
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
+    });
 
-        $("#createplan").on("submit", function (event) {
-            // Make sure to preventDefault on a submit event.
-            event.preventDefault();
+    $("#createBurger").on("submit", function (event) {
+        // Make sure to preventDefault on a submit event.
+        event.preventDefault();
 
-            // [name=plan] will find an element with a "name" attribute equal to the string "plan"
-            var newPlan = {
-                plan: $("#createplan [name=plan]").val().trim()
-            };
+        // [name=plan] will find an element with a "name" attribute equal to the string "plan"
+        var newBurger = {
+            plan: $("#createBurger [name=burger]").val().trim()
+        };
 
-            // Send the POST request.
-            $.ajax("/api/plans", {
-                type: "POST",
-                data: newPlan
-            }).then(
-                function () {
-                    console.log("created new plan");
-                    // Reload the page to get the updated list
-                    location.reload();
-                }
-            );
-        });
+        // Send the POST request.
+        $.ajax("/api/plans", {
+            type: "POST",
+            data: newBurger
+        }).then(
+            function () {
+                console.log("created new plan");
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
+    });
 
-        $("#updateplan").on("submit", function (event) {
-            // Make sure to preventDefault on a submit event.
-            event.preventDefault();
+    $("#eatBurger").on("submit", function (event) {
+        // Make sure to preventDefault on a submit event.
+        event.preventDefault();
 
-            // Get the ID by finding an element with a "name" attribute equal to the string "id"
-            var id = $("[name=id]").val().trim();
+        // Get the ID by finding an element with a "name" attribute equal to the string "id"
+        var id = $("[name=id]").val().trim();
 
-            var updatedPlan = {
-                plan: $("#updateplan [name=plan]").val().trim()
-            };
+        var updatedBurger = {
+            plan: $("#eatBurger [name=burger]").val().trim()
+        };
 
-            // Send the PUT request.
-            $.ajax("/api/plans/" + id, {
-                type: "PUT",
-                data: updatedPlan
-            }).then(
-                function () {
-                    console.log("updated id ", id);
-                    // Reload the page to get the updated list
-                    location.reload();
-                }
-            );
-        });
-    </script> --}}
-</body>
+        // Send the PUT request.
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT",
+            data: updatedBurger
+        }).then(
+            function () {
+                console.log("updated id ", id);
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
+    });
+</script>

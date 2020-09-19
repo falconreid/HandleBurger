@@ -1,4 +1,4 @@
-// const { update } = require("../models/burger.js");
+const { update } = require("../models/burger.js");
 
 var connection = require("./connection.js");
 
@@ -25,5 +25,7 @@ var orm = {
     });
   },
 };
+
+console.log(orm);
 
 module.exports = orm;
