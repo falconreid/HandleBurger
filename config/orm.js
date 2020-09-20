@@ -13,9 +13,12 @@ var orm = {
       return res;
     });
   },
-  insertOne: function (id, newburger) {
-    var queryString = "INSERT INTO ?? (??, ??) VALUES(?,?)";
-    connection.query(queryString, [id, newburger], function (err, res) {
+  insertOne: function (id, newburger, devoured) {
+    var queryString = "INSERT INTO burgers VALUES(id, ?, devoured)";
+    connection.query(queryString, [id, newburger, devoured], function (
+      err,
+      res
+    ) {
       if (err) throw err;
       return res;
     });

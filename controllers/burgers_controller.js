@@ -17,15 +17,17 @@ router.get("/", function (req, res) {
 });
 
 router.post("/api/burgers", function (req, res) {
-  burger.create(["id", "burger_name"], [req.body.id, req.body.type], function (
-    result
-  ) {
-    // Send back the ID of the new burger
-    res.json({ id: result.insertId });
-  });
+  burger.create(
+    ["id", "burger_name", "devoured"],
+    [req.body.id, req.body.type, req.body.status],
+    function (result) {
+      // Send back the ID of the new burger
+      res.json({ id: result.insertId });
+    }
+  );
 });
 
-router.put("/api/burgers/:id?", function (req, res) {
+router.put("/api/burgers/:id", function (req, res) {
   var condition = "id = " + req.params.id;
 
   burger.update(
