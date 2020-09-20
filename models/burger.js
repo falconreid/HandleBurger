@@ -5,6 +5,7 @@ var burger = {
   all: function (cb) {
     orm.selectAll("burgers", function (res) {
       cb(res);
+      console.log(res);
     });
   },
   // The variables cols and vals are arrays.
@@ -13,18 +14,12 @@ var burger = {
       cb(res);
     });
   },
-  update: function (objColVals, condition, cb) {
-    orm.updateOne("burgers", objColVals, condition, function (res) {
-      cb(res);
-    });
-  },
+
   update: function (condition, cb) {
     orm.updateOne("burgers", condition, function (res) {
       cb(res);
     });
   },
 };
-console.log(burger);
 
-// Export the database functions for the controller (catsController.js).
 module.exports = burger;

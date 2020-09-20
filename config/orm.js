@@ -1,12 +1,15 @@
-const { update } = require("../models/burger.js");
+// const { update } = require("../models/burger.js");
 
-var connection = require("./connection.js");
+var connection = require("../config/connection.js");
 
 var orm = {
-  selectAll: function (id, burgers) {
-    var queryString = "SELECT * FROM burgers";
-    connection.query(queryString, [id, burgers], function (err, res) {
-      if (err) throw err;
+  selectAll: function (tableInput, cb) {
+    var queryString = "SELECT * FROM " + tableInput + ";";
+    connection.query(queryString, function (err, res) {
+      if (err) {
+        throw err;
+      }
+      cb(res);
       return res;
     });
   },
@@ -25,7 +28,5 @@ var orm = {
     });
   },
 };
-
-console.log(orm);
 
 module.exports = orm;

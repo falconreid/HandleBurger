@@ -5,7 +5,7 @@
 
         </div>
         <div class="col-6">
-            <img src="./public/img/handle-burger-bar.png" alt="Handle Burger Bar logo" title="Handle Burger Bar">
+            <img src="../img/handle-burger-bar.png" alt="Handle Burger Bar logo" title="Handle Burger Bar">
         </div>
         <div class="col">
 
@@ -18,10 +18,10 @@
         <div class="col">
 
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <h2>Add a Burger</h2>
             <form id="createBurger" class="button-size">
-                <textarea type="text" name="plan"></textarea>
+                <textarea type="text" name="burger"></textarea>
                 <button type="submit">Save Burger</button>
             </form>
         </div>
@@ -30,11 +30,13 @@
         </div>
     </div>
 </main>
+<hr>
 
 <div id="split" class="container">
     <div class="row">
         <div id="Eat" class="col">
             <h3>Burgers to be Eaten</h3>
+
             <ul>
                 {{#each burger}}
                 <li>
@@ -63,73 +65,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-<script type="text/javascript">
-    $(".delplan").on("click", function (event) {
-        // Get the ID from the button.
-        // This is shorthand for $(this).attr("data-planid")
-        var id = $(this).data("planid");
-
-        // Send the DELETE request.
-        $.ajax("/api/plans/" + id, {
-            type: "DELETE"
-        }).then(
-            function () {
-                console.log("deleted id ", id);
-                // Reload the page to get the updated list
-                location.reload();
-            }
-        );
-    });
-
-    $("#createBurger").on("submit", function (event) {
-        // Make sure to preventDefault on a submit event.
-        event.preventDefault();
-
-        // [name=plan] will find an element with a "name" attribute equal to the string "plan"
-        var newBurger = {
-            plan: $("#createBurger [name=burger]").val().trim()
-        };
-
-        // Send the POST request.
-        $.ajax("/api/plans", {
-            type: "POST",
-            data: newBurger
-        }).then(
-            function () {
-                console.log("created new plan");
-                // Reload the page to get the updated list
-                location.reload();
-            }
-        );
-    });
-
-    $("#eatBurger").on("submit", function (event) {
-        // Make sure to preventDefault on a submit event.
-        event.preventDefault();
-
-        // Get the ID by finding an element with a "name" attribute equal to the string "id"
-        var id = $("[name=id]").val().trim();
-
-        var updatedBurger = {
-            plan: $("#eatBurger [name=burger]").val().trim()
-        };
-
-        // Send the PUT request.
-        $.ajax("/api/burgers/" + id, {
-            type: "PUT",
-            data: updatedBurger
-        }).then(
-            function () {
-                console.log("updated id ", id);
-                // Reload the page to get the updated list
-                location.reload();
-            }
-        );
-    });
-</script>
