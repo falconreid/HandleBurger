@@ -5,6 +5,7 @@
 
         </div>
         <div class="col-6">
+            <!-- LOGO -->
             <img src="../img/handle-burger-bar.png" alt="Handle Burger Bar logo" title="Handle Burger Bar">
         </div>
         <div class="col">
@@ -19,6 +20,7 @@
 
         </div>
         <div class="col-4">
+            <!-- Add Burger Form -->
             <h2>Add a Burger</h2>
             <form id="createBurger" class="button-size">
                 <textarea type="text" name="burger"></textarea>
@@ -38,10 +40,10 @@
             <h3>Burgers to be Eaten</h3>
 
             <ul>
-                {{#each burger}}
+                {{#each burgers}}
                 <li>
                     <p>
-                        {{this.id}}. {{this.burger}}
+                        {{this.id}}. {{this.burgers}}
 
                         <button data-burgerid="{{this.id}}" class="eatBurger">Devour the Burger</button>
                     </p>
@@ -49,7 +51,7 @@
                 {{/each}}
             </ul>
         </div>
-        <div class="col">
+        <div id="Eaten" class="col">
             <h3>Burgers I've Eaten</h3>
             <ul>
                 {{#each eatenBurger}}
@@ -57,7 +59,7 @@
                     <p>
                         {{this.id}}. {{this.eatenBurger}}
 
-                        <button data-burgerid="{{this.id}}" class="delBurger">Clear</button>
+                        <button data-burgerid="{{this.id}}" class="eatenBurger">Clear</button>
                     </p>
                 </li>
                 {{/each}}

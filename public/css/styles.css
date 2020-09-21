@@ -1,3 +1,16 @@
 body {
   background-color: #d1603d;
 }
+
+hr {
+  border-top: 1px solid #fff;
+}
+
+#Eat {
+  border-right: 1px solid #fff;
+}
+
+#Eat,
+#Eaten {
+  text-align: center;
+}
