@@ -26,7 +26,7 @@ Handle Burger Bar is a 'foodie' app incorporating MVC, Node, JS, MySQL, Express,
 # Installation
 
 This app is deployed to Heroku. To see the app:
-[Heroku Handle Burger Bar]()
+[Heroku Handle Burger Bar](https://calm-brushlands-06057.herokuapp.com/)
 
 ### Screenshot
 
