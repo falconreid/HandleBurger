@@ -14,3 +14,12 @@ hr {
 #Eaten {
   text-align: center;
 }
+
+ul {
+  list-style-type: none;
+  font-size: 20px;
+}
+
+#Eat ul {
+  text-align: left;
+}

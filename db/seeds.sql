@@ -10,3 +10,7 @@ INSERT INTO burgers
     (burger_name, devoured)
 VALUES
     ('Gourmet Mushroom Burger', false);
+INSERT INTO burgers
+    (burger_name, devoured)
+VALUES
+    ('Beetle Grub Burger', true);

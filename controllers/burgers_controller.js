@@ -12,7 +12,11 @@ router.get("/", function (req, res) {
     var object = {
       burgers: data,
     };
-    console.log(object);
+    // for (burger in burgers) {
+    //   console.log(burger.id);
+    //   console.log(burger.burger_name);
+    //   console.log(burger.devoured);
+    // }
     res.render("index", object);
   });
 });

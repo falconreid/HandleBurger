@@ -43,7 +43,7 @@
                 {{#each burgers}}
                 <li>
                     <p>
-                        {{this.id}}. {{this.burgers}}
+                        {{id}}. {{burger_name}}
 
                         <button data-burgerid="{{this.id}}" class="eatBurger">Devour the Burger</button>
                     </p>
@@ -57,7 +57,7 @@
                 {{#each eatenBurger}}
                 <li>
                     <p>
-                        {{this.id}}. {{this.eatenBurger}}
+                        {{id}}. {{burger_name}}
 
                         <button data-burgerid="{{this.id}}" class="eatenBurger">Clear</button>
                     </p>
