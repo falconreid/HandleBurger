@@ -12,11 +12,7 @@ router.get("/", function (req, res) {
     var object = {
       burgers: data,
     };
-    // for (burger in burgers) {
-    //   console.log(burger.id);
-    //   console.log(burger.burger_name);
-    //   console.log(burger.devoured);
-    // }
+
     res.render("index", object);
   });
 });
@@ -34,7 +30,7 @@ router.put("/api/burgers/:id", function (req, res) {
   console.log("condition", condition);
   burger.update(
     {
-      burger: req.body.type,
+      devoured: req.body.devoured,
     },
     condition,
     function (result) {
