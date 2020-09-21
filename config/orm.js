@@ -59,10 +59,17 @@ var orm = {
       return res;
     });
   },
-  updateOne: function (id, eatburger) {
-    var queryString = "INSERT INTO ?? (??, ??) VALUES(?,?)";
-    connection.query(queryString, [id, eatburger], function (err, res) {
+  updateOne: function (table, objColVals, condition, cb) {
+    var queryString = "UPDATE " + table;
+
+    queryString += " SET ";
+    queryString += objToSql(objColVals);
+    queryString += " WHERE ";
+    queryString += condition;
+
+    connection.query(queryString, function (err, res) {
       if (err) throw err;
+      cb(res);
       return res;
     });
   },

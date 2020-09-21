@@ -9,7 +9,7 @@ VALUES
 INSERT INTO burgers
     (burger_name, devoured)
 VALUES
-    ('Gourmet Mushroom Burger', false);
+    ('Portobello Mushroom Burger', false);
 INSERT INTO burgers
     (burger_name, devoured)
 VALUES
